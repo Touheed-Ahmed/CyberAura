@@ -1,0 +1,6 @@
+{
+  "name": "Cyber Aura",
+  "description": "Cyber Aura - Fortifying Digital Frontiers. Master threat detection, SIEM analytics, and cloud defense with hands-on technical training and specialized cybersecurity assets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

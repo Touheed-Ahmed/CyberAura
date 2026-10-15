@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0a0a10" />
+      <stop offset="100%" stop-color="#050508" />
+    </radialGradient>
+
+    <!-- Aura Neon Gradient: Magenta to Cyan -->
+    <linearGradient id="auraGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C026D3" />
+      <stop offset="35%" stop-color="#E879F9" />
+      <stop offset="70%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+
+    <!-- Neon Glow Filter -->
+    <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur1" />
+      <feGaussianBlur stdDeviation="24" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="800" fill="url(#bgGrad)" />
+
+  <!-- Background Cyber Decals & Network Nodes -->
+  <g opacity="0.45" stroke="#34D399" stroke-width="1.2" fill="none">
+    <line x1="560" y1="230" x2="670" y2="245" />
+    <line x1="670" y1="245" x2="690" y2="340" />
+    <line x1="670" y1="245" x2="630" y2="290" />
+    <line x1="630" y1="290" x2="690" y2="340" />
+    <line x1="540" y1="590" x2="590" y2="580" />
+    <line x1="590" y1="580" x2="640" y2="520" />
+    <line x1="640" y1="520" x2="600" y2="610" />
+
+    <circle cx="560" cy="230" r="3" fill="#34D399" />
+    <circle cx="670" cy="245" r="4" fill="#38BDF8" />
+    <circle cx="690" cy="340" r="3" fill="#34D399" />
+    <circle cx="630" cy="290" r="2.5" fill="#C026D3" />
+    <circle cx="590" cy="580" r="3" fill="#34D399" />
+    <circle cx="640" cy="520" r="2.5" fill="#38BDF8" />
+    <circle cx="600" cy="610" r="3" fill="#34D399" />
+  </g>
+
+  <!-- Terminal Watermark Monospace Text -->
+  <g font-family="'JetBrains Mono', 'Courier New', monospace" font-size="15" fill="#4B5563" letter-spacing="1.5">
+    <text x="80" y="275" fill="#6B7280" opacity="0.7">root@cyberaura_academy:~# _</text>
+    <text x="390" y="250" fill="#9CA3AF" opacity="0.8">01101011</text>
+    <text x="590" y="240" fill="#EF4444" opacity="0.8">[ERROR]</text>
+    <text x="80" y="605" fill="#6B7280" opacity="0.7">root@cyberaura_academy:~# _</text>
+    <text x="590" y="590" fill="#EF4444" opacity="0.8">[ERROR]</text>
+    <text x="560" y="625" fill="#9CA3AF" opacity="0.75" font-size="13">random network nodes</text>
+  </g>
+
+  <!-- Main Logotype Group -->
+  <g transform="translate(400, 440)">
+    
+    <!-- Wordmark: CyberAura -->
+    <g transform="translate(-320, 0)">
+      <!-- "Cyber" in Solid White Heavy Angular Font -->
+      <text x="0" y="0" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-weight="900" font-size="118" fill="#FFFFFF" letter-spacing="-3">
+        Cyber
+      </text>
+
+      <!-- "Aura" with Neon Purple-to-Cyan Gradient and Outer Glow -->
+      <text x="350" y="0" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-weight="900" font-size="118" fill="url(#auraGradient)" filter="url(#neonGlow)" letter-spacing="-2">
+        Aura
+      </text>
+    </g>
+
+    <!-- Subtitle: ACADEMY -->
+    <text x="0" y="65" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-weight="900" font-size="44" fill="#FFFFFF" text-anchor="middle" letter-spacing="18">
+      ACADEMY
+    </text>
+
+  </g>
+
+  <!-- 4-Point Star in Bottom Right -->
+  <g transform="translate(705, 705)">
+    <path d="M0 -35 Q0 0 35 0 Q0 0 0 35 Q0 0 -35 0 Q0 0 0 -35 Z" fill="#FFFFFF" opacity="0.95" filter="url(#softGlow)" />
+  </g>
+</svg>

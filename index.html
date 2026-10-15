@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberAura | Next-Generation Cybersecurity Education and Training</title>
+  <meta name="description" content="Next-Generation Cybersecurity Education and Training. Master threat detection, SIEM analytics, and cloud defense with CyberAura. 15 core curriculum modules paired with 180 digital learning assets, with scenario-based practical labs in active production." />
+  <meta property="og:title" content="CyberAura | Next-Generation Cybersecurity Education and Training" />
+  <meta property="og:description" content="Next-Generation Cybersecurity Education and Training. 15 Core Modules, 180 Digital Learning Assets, and Upcoming Hands-On Practical Labs." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: {
+              DEFAULT: '#07070A',
+              card: '#0F0F16',
+              surface: '#151520',
+              border: '#20202F'
+            },
+            burgundy: {
+              DEFAULT: '#800020',
+              hover: '#6B0D2F',
+              deep: '#4E0720',
+              glow: 'rgba(128, 0, 32, 0.45)'
+            },
+            gold: {
+              DEFAULT: '#D4AF37',
+              light: '#F3E5AB',
+              hover: '#E5C158',
+              muted: '#A28424'
+            },
+            aura: {
+              magenta: '#C026D3',
+              purple: '#A855F7',
+              cyan: '#06B6D4',
+              sky: '#38BDF8'
+            },
+            cream: {
+              DEFAULT: '#F5F5F0',
+              muted: '#C4C4BC'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Internal Custom Styling -->
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      background-color: #07070A;
+      color: #F5F5F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* CyberAura background glow & grid */
+    .cyber-grid-pattern {
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(192, 38, 211, 0.12) 0%, rgba(128, 0, 32, 0.18) 35%, transparent 70%),
+        linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+      background-size: 100% 100%, 48px 48px, 48px 48px;
+    }
+
+    .glow-aura {
+      box-shadow: 0 0 40px -10px rgba(192, 38, 211, 0.35);
+    }
+
+    .glow-burgundy {
+      box-shadow: 0 0 35px -5px rgba(128, 0, 32, 0.4);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #07070A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #20202F;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #800020;
+    }
+
+    /* Modal Animation */
+    .modal-enter {
+      animation: modalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.96) translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-cream selection:bg-burgundy selection:text-gold-light antialiased">
+
+  <!-- Header & Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-obsidian/90 border-b border-obsidian-border transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
+      
+      <!-- Zone 1: Official CyberAura Brand Lockup (Clean, No Duplicate Labels) -->
+      <a href="#hero" class="flex items-center gap-3.5 group shrink-0">
+        <div class="h-11 w-11 rounded-xl bg-black border border-obsidian-border p-1.5 flex items-center justify-center shadow-lg group-hover:border-aura-magenta/50 transition-colors duration-200">
+          <img src="/src/assets/images/cyberaura_logo.svg" alt="CyberAura Logo" class="h-full w-full object-contain" />
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-baseline">
+            <span class="text-xl font-black tracking-tight text-white font-sans">Cyber</span>
+            <span class="text-xl font-black tracking-tight bg-gradient-to-r from-aura-magenta via-purple-400 to-aura-cyan bg-clip-text text-transparent font-sans">Aura</span>
+          </div>
+          <span class="text-[11px] font-mono tracking-wider text-gold lowercase">cyberaura.academy</span>
+        </div>
+      </a>
+
+      <!-- Zone 2: Navigation Links -->
+      <nav class="hidden xl:flex items-center gap-6 text-sm font-medium text-cream-muted">
+        <a href="#hero" class="hover:text-gold transition-colors whitespace-nowrap">Home</a>
+        <a href="#featured-course" class="hover:text-gold transition-colors whitespace-nowrap">Featured Course</a>
+        <a href="#modules" class="hover:text-gold transition-colors whitespace-nowrap">15 Modules</a>
+        <a href="#practical-labs" class="text-aura-cyan hover:text-white transition-colors whitespace-nowrap flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-aura-cyan animate-pulse"></span>
+          <span>Practical Labs <span class="text-[11px] px-1.5 py-0.5 rounded bg-aura-cyan/15 text-aura-sky font-mono">Coming Soon</span></span>
+        </a>
+        <a href="#events" class="hover:text-gold transition-colors whitespace-nowrap flex items-center gap-1.5">
+          <span>Events & Webinars</span>
+        </a>
+        <a href="#about" class="hover:text-gold transition-colors whitespace-nowrap">About</a>
+        <a href="https://www.linkedin.com/in/touheedahmed" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition-colors whitespace-nowrap inline-flex items-center gap-1">
+          <span>LinkedIn</span>
+          <svg class="w-3 h-3 opacity-60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+          </svg>
+        </a>
+        <button onclick="openModal('contactModal')" class="hover:text-gold transition-colors whitespace-nowrap cursor-pointer">Contact</button>
+      </nav>
+
+      <!-- Zone 3: Header CTA & Mobile Menu Toggle -->
+      <div class="flex items-center gap-3 shrink-0">
+        <a href="#featured-course" class="relative group px-5 py-2.5 rounded-lg text-xs font-semibold tracking-wide uppercase transition-all duration-200 bg-burgundy hover:bg-burgundy-hover text-cream border border-gold/60 hover:border-gold shadow-md hover:shadow-gold/20 flex items-center gap-2 whitespace-nowrap">
+          <span>Explore Course</span>
+          <svg class="w-4 h-4 text-gold transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button id="mobileMenuBtn" aria-label="Toggle Navigation Menu" class="xl:hidden p-2 rounded-lg text-cream-muted hover:text-cream bg-obsidian-surface border border-obsidian-border focus:outline-none cursor-pointer">
+          <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+          <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden xl:hidden px-4 pt-3 pb-6 border-t border-obsidian-border bg-obsidian/95 backdrop-blur-lg">
+      <nav class="flex flex-col space-y-3.5 text-sm font-medium">
+        <a href="#hero" class="mobile-nav-link text-cream-muted hover:text-gold py-1">Home</a>
+        <a href="#featured-course" class="mobile-nav-link text-cream-muted hover:text-gold py-1">Featured Course & Mega-Bundle</a>
+        <a href="#modules" class="mobile-nav-link text-cream-muted hover:text-gold py-1">The 15 Curriculum Modules</a>
+        <a href="#practical-labs" class="mobile-nav-link text-aura-cyan hover:text-white py-1 flex items-center justify-between">
+          <span>Practical Labs</span>
+          <span class="text-xs px-2 py-0.5 rounded bg-aura-cyan/20 text-aura-sky font-mono">Coming Soon</span>
+        </a>
+        <a href="#events" class="mobile-nav-link text-cream-muted hover:text-gold py-1">Events & Webinars</a>
+        <a href="#about" class="mobile-nav-link text-cream-muted hover:text-gold py-1">About Touheed Ahmed</a>
+        <a href="https://www.linkedin.com/in/touheedahmed" target="_blank" rel="noopener noreferrer" class="text-cream-muted hover:text-gold py-1 flex items-center justify-between">
+          <span>Personal LinkedIn</span>
+          <span class="text-xs text-gold">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/company/cyberaura" target="_blank" rel="noopener noreferrer" class="text-cream-muted hover:text-gold py-1 flex items-center justify-between">
+          <span>Company LinkedIn</span>
+          <span class="text-xs text-gold">↗</span>
+        </a>
+        <button onclick="openModal('contactModal'); toggleMobileMenu();" class="text-left text-cream-muted hover:text-gold py-1 cursor-pointer">Contact Academy</button>
+        <div class="pt-2">
+          <a href="#featured-course" onclick="toggleMobileMenu();" class="w-full text-center block px-4 py-2.5 rounded-lg bg-burgundy hover:bg-burgundy-hover border border-gold text-cream font-semibold text-xs uppercase tracking-wider">
+            Get CyberAura Mega-Bundle ($15 / PKR 1,000)
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-12 pb-20 md:pt-20 md:pb-32 cyber-grid-pattern border-b border-obsidian-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Hero Text (7 cols) -->
+        <div class="lg:col-span-7 flex flex-col justify-center">
+          
+          <!-- Eyebrow Badge -->
+          <div class="flex flex-wrap items-center gap-3 text-xs font-mono uppercase tracking-widest text-gold mb-4">
+            <span class="w-2 h-2 rounded-full bg-aura-cyan"></span>
+            <span>CyberAura: Comprehensive Cybersecurity Academy</span>
+            <span class="text-obsidian-border">|</span>
+            <span class="text-cream-muted">15 Modules · 180 Learning Assets</span>
+          </div>
+
+          <!-- Official Main Headline with New Official Tagline -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-cream leading-[1.14] mb-6" style="text-wrap: balance;">
+            Next-Generation Cybersecurity Education and Training
+          </h1>
+
+          <!-- Subheadline with Academy Journey -->
+          <p class="text-lg sm:text-xl text-cream-muted font-normal leading-relaxed mb-6 max-w-2xl">
+            Master threat detection, SIEM analytics, and cloud defense with deep foundational training and specialized digital assets. 15 core curriculum modules available now, with scenario-based practical labs rolling out as part of your training journey.
+          </p>
+
+          <!-- Rephrased Professional Enrollment Note Box (Clean Badge & Contrast) -->
+          <div class="p-4 rounded-xl bg-obsidian-card border border-gold/40 shadow-lg mb-8 max-w-2xl flex items-start gap-3.5">
+            <div class="w-7 h-7 rounded-lg bg-gold/15 border border-gold/40 flex items-center justify-center text-gold shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+              </svg>
+            </div>
+            <div class="text-xs text-cream/90 leading-relaxed">
+              <strong class="text-gold font-mono uppercase tracking-wider block mb-0.5">Current Enrollment Note:</strong>
+              This launch package includes 15 core curriculum modules paired with 180 digital learning assets. Practical, scenario-based labs are currently in active production and will be added as a complimentary update for all enrolled students.
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-10">
+            <!-- Primary Action -->
+            <a href="#featured-course" class="px-8 py-4 rounded-xl bg-burgundy hover:bg-burgundy-hover text-cream font-bold text-sm tracking-wide transition-all duration-200 border border-gold shadow-lg hover:shadow-gold/20 flex items-center justify-center gap-3 group">
+              <span>Get The Course Mega-Bundle</span>
+              <svg class="w-5 h-5 text-gold group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+              </svg>
+            </a>
+
+            <!-- Sample Video Trigger -->
+            <a href="#sample-lecture" class="px-6 py-4 rounded-xl bg-obsidian-surface hover:bg-obsidian-surface/80 text-cream font-semibold text-sm transition-all duration-200 border border-obsidian-border hover:border-aura-cyan flex items-center justify-center gap-2.5">
+              <div class="w-5 h-5 rounded-full bg-aura-cyan/20 flex items-center justify-center text-aura-cyan">
+                <svg class="w-3 h-3 fill-current ml-0.5" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <span>Watch Sample Lecture</span>
+            </a>
+
+            <!-- Secondary Action: LinkedIn -->
+            <a href="https://www.linkedin.com/in/touheedahmed" target="_blank" rel="noopener noreferrer" class="px-5 py-4 rounded-xl bg-obsidian-surface/60 hover:bg-obsidian-surface text-cream-muted hover:text-cream text-sm transition-all duration-200 border border-obsidian-border hover:border-gold/50 flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-[#0A66C2]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <span>Touheed Ahmed</span>
+            </a>
+          </div>
+
+          <!-- Verified Metrics Strip -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-obsidian-border">
+            <div>
+              <p class="text-2xl font-bold font-mono tabular-nums text-white">15</p>
+              <p class="text-xs text-cream-muted uppercase tracking-wider mt-0.5">Core Modules</p>
+            </div>
+            <div>
+              <p class="text-2xl font-bold font-mono tabular-nums text-aura-cyan">180</p>
+              <p class="text-xs text-cream-muted uppercase tracking-wider mt-0.5">12 Assets / Module</p>
+            </div>
+            <div>
+              <p class="text-2xl font-bold font-mono tabular-nums text-gold">$15</p>
+              <p class="text-xs text-cream-muted uppercase tracking-wider mt-0.5">Card / International</p>
+            </div>
+            <div>
+              <p class="text-2xl font-bold font-mono tabular-nums text-emerald-400">Rs 1,000</p>
+              <p class="text-xs text-cream-muted uppercase tracking-wider mt-0.5">EasyPaisa / JazzCash</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Hero Focal Visual: Clean Product Layout Card (No Terminal Artifacts) -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          <div class="relative w-full max-w-md rounded-3xl overflow-hidden border-2 border-obsidian-border bg-obsidian-card shadow-2xl p-6 group hover:border-aura-magenta/50 transition-all duration-300 glow-aura">
+            
+            <!-- Professional Header Card -->
+            <div class="pb-4 mb-4 border-b border-obsidian-border flex items-center justify-between">
+              <div>
+                <span class="text-xs font-mono text-gold uppercase tracking-wider block">CyberAura Academy</span>
+                <span class="text-xs text-cream-muted">Masterclass & Asset Vault</span>
+              </div>
+              <span class="text-xs font-mono px-2.5 py-1 rounded bg-aura-cyan/15 text-aura-sky border border-aura-cyan/30">
+                Active Enrollment
+              </span>
+            </div>
+
+            <!-- Official CyberAura Emblem Visual -->
+            <div class="relative aspect-square w-full rounded-2xl overflow-hidden bg-black flex items-center justify-center p-4 border border-obsidian-border">
+              <img 
+                src="/src/assets/images/cyberaura_logo.svg" 
+                alt="CyberAura Academy Official Logo" 
+                class="w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(192,38,211,0.4)]"
+              />
+            </div>
+
+            <!-- Key Asset Breakdown Pill Strip -->
+            <div class="mt-5 grid grid-cols-2 gap-2 text-[11px] font-mono text-cream-muted">
+              <div class="p-2.5 rounded-lg bg-obsidian-surface border border-obsidian-border">
+                <span class="text-white block font-bold">15 Lectures</span>
+                <span>Master Video Sessions</span>
+              </div>
+              <div class="p-2.5 rounded-lg bg-obsidian-surface border border-obsidian-border">
+                <span class="text-white block font-bold">15 Audio Tracks</span>
+                <span>Deep Dive Breakdowns</span>
+              </div>
+              <div class="p-2.5 rounded-lg bg-obsidian-surface border border-obsidian-border">
+                <span class="text-gold block font-bold">75 PDF Guides</span>
+                <span>Study Slides & Notes</span>
+              </div>
+              <div class="p-2.5 rounded-lg bg-obsidian-surface border border-obsidian-border">
+                <span class="text-aura-cyan block font-bold">75 Architecture</span>
+                <span>Explanation Videos</span>
+              </div>
+            </div>
+
+            <!-- Bottom Action Link -->
+            <div class="mt-4 pt-3 border-t border-obsidian-border flex items-center justify-between text-xs">
+              <span class="text-cream-muted">180 Total Curated Assets</span>
+              <a href="#featured-course" class="text-gold hover:underline font-semibold flex items-center gap-1">
+                <span>View Full Curriculum</span>
+                <span>→</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sample Video Feature Section (Cleaned, No Terminal Artifacts) -->
+  <section id="sample-lecture" class="py-20 bg-obsidian-card border-b border-obsidian-border relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mb-10">
+        <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-aura-cyan mb-2">
+          <span>Sample Video Lecture</span>
+          <span>·</span>
+          <span>Module 1 Preview</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-cream mb-3 flex items-center gap-3">
+          <svg class="w-8 h-8 text-aura-cyan shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+          </svg>
+          <span>Sample Lecture: Network Protocol Deep Dives</span>
+        </h2>
+        <p class="text-cream-muted text-base">
+          Preview how CyberAura breaks down high-level network architecture, TCP/IP vs OSI layers, port mechanics, and how adversaries exploit unmonitored communication layers.
+        </p>
+      </div>
+
+      <!-- Video Player Container (Clean Professional Product Frame) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Video Player Frame (8 Cols) -->
+        <div class="lg:col-span-8 rounded-2xl overflow-hidden border border-obsidian-border bg-obsidian shadow-2xl relative">
+          
+          <!-- Clean Video Header Bar -->
+          <div class="px-5 py-3.5 bg-obsidian-surface border-b border-obsidian-border flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-aura-cyan"></span>
+              <span class="font-semibold text-cream">Module 01: Network Protocol Deep Dives</span>
+            </div>
+            <span class="font-mono text-cream-muted">Full Preview Lecture</span>
+          </div>
+
+          <!-- Video Element Container -->
+          <div class="relative aspect-video bg-black flex items-center justify-center overflow-hidden group">
+            
+            <video 
+              id="courseSampleVideo" 
+              controls 
+              preload="metadata"
+              poster="/src/assets/images/hero_cyber_soc_1792049509333.jpg"
+              class="w-full h-full object-cover"
+            >
+              <source src="/src/assets/videos/sample_lecture.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
+            <!-- Video Overlay for Quick Play -->
+            <div id="videoOverlay" class="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex flex-col items-center justify-center p-6 text-center cursor-pointer transition-opacity duration-300" onclick="playSampleVideo()">
+              <div class="w-20 h-20 rounded-full bg-burgundy/90 border-2 border-gold flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition-transform mb-4">
+                <svg class="w-8 h-8 fill-current ml-1 text-gold" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-1">Click to Watch Module 1 Sample Video</h3>
+              <p class="text-xs text-cream-muted max-w-md">
+                "When we picture hackers, we imagine someone furiously typing in a dark room... but real cyber defense starts at the packet level."
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Video Chapters & Interactive Scrubber -->
+          <div class="p-4 bg-obsidian-surface border-t border-obsidian-border">
+            <p class="text-xs font-mono text-gold uppercase tracking-wider mb-2">Lecture Chapters & Timestamps:</p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+              <button onclick="seekVideo(0)" class="p-2 rounded bg-obsidian-card hover:bg-obsidian border border-obsidian-border text-left hover:border-gold/40 text-cream-muted hover:text-cream transition-colors cursor-pointer">
+                <span class="text-gold font-mono block">00:00</span>
+                <span>The Hacker Myth</span>
+              </button>
+              <button onclick="seekVideo(32)" class="p-2 rounded bg-obsidian-card hover:bg-obsidian border border-obsidian-border text-left hover:border-gold/40 text-cream-muted hover:text-cream transition-colors cursor-pointer">
+                <span class="text-gold font-mono block">00:32</span>
+                <span>OSI vs TCP/IP Stack</span>
+              </button>
+              <button onclick="seekVideo(95)" class="p-2 rounded bg-obsidian-card hover:bg-obsidian border border-obsidian-border text-left hover:border-gold/40 text-cream-muted hover:text-cream transition-colors cursor-pointer">
+                <span class="text-gold font-mono block">01:35</span>
+                <span>Port Scanning & Nmap</span>
+              </button>
+              <button onclick="seekVideo(217)" class="p-2 rounded bg-obsidian-card hover:bg-obsidian border border-obsidian-border text-left hover:border-gold/40 text-cream-muted hover:text-cream transition-colors cursor-pointer">
+                <span class="text-gold font-mono block">03:37</span>
+                <span>ARP Spoofing & MITM</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Video Context & Learning Outcomes (4 Cols) -->
+        <div class="lg:col-span-4 space-y-4">
+          
+          <div class="p-6 rounded-2xl bg-obsidian-surface border border-obsidian-border">
+            <h4 class="text-sm font-mono text-gold uppercase tracking-wider mb-3">Module 1 Syllabus Focus</h4>
+            <ul class="space-y-3 text-xs text-cream-muted">
+              <li class="flex items-start gap-2.5">
+                <span class="text-aura-cyan font-bold font-mono">01.</span>
+                <span><strong>The Physical & Logical Battlefield:</strong> Moving past the application interface down to raw packet streams.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-aura-cyan font-bold font-mono">02.</span>
+                <span><strong>Layer 2 Data Link & MAC Spoofing:</strong> How switches route frames and how ARP poisoning redirects traffic.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-aura-cyan font-bold font-mono">03.</span>
+                <span><strong>Layer 4 Transport Dynamics:</strong> TCP 3-way handshakes versus UDP fire-and-forget streams.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-aura-cyan font-bold font-mono">04.</span>
+                <span><strong>Encryption as Friction:</strong> Why TLS, HTTPS, and QUIC tunnels blind unauthenticated network sniffers.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-obsidian-surface/60 border border-gold/30">
+            <span class="text-[11px] font-mono text-gold uppercase tracking-wider block mb-1">Module 1 Asset Bundle (12 Total)</span>
+            <p class="text-sm font-bold text-cream mb-1">1 Master Video + 1 Audio + 5 PDFs + 5 Videos</p>
+            <p class="text-xs text-cream-muted leading-relaxed mb-4">
+              Includes comprehensive protocol maps, TCP/UDP packet dictionaries, and architecture breakdown slides.
+            </p>
+            <a href="#featured-course" class="w-full py-2.5 px-4 rounded-lg bg-burgundy hover:bg-burgundy-hover border border-gold text-cream font-bold text-xs uppercase text-center block transition-colors">
+              Unlock All 15 Modules ($15 / PKR 1,000)
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Featured Product Section: Mega-Bundle Sales Page -->
+  <section id="featured-course" class="py-20 md:py-28 bg-obsidian border-b border-obsidian-border relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="max-w-3xl mb-14">
+        <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gold mb-3">
+          <span>Featured Curriculum</span>
+          <span>·</span>
+          <span>Complete Cybersecurity Masterclass</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-cream mb-4" style="text-wrap: balance;">
+          CyberAura Mega-Bundle & 15-Module Curriculum
+        </h2>
+        <p class="text-cream-muted text-base sm:text-lg leading-relaxed">
+          The complete masterclass package engineered for defenders, security engineers, and researchers. Across 15 core disciplines, every single module delivers exactly 12 structured digital assets for complete mastery.
+        </p>
+      </div>
+
+      <!-- Main Product Grid: 2 Columns (Content & Pricing) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Side: Product Breakdown (7 Cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Asset Vault Card with Exact 12-Asset Breakdown -->
+          <div class="p-6 sm:p-8 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/40 transition-colors">
+            
+            <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between pb-6 border-b border-obsidian-border">
+              <div>
+                <span class="text-xs font-mono text-gold uppercase tracking-wider block mb-1">Definitive Vault Architecture</span>
+                <h3 class="text-xl font-bold text-cream">180 Specialized Digital Learning Assets</h3>
+                <p class="text-xs text-cream-muted">Precisely 12 structured assets in every module (15 × 12 = 180 Assets)</p>
+              </div>
+              <button onclick="openModal('previewModal')" class="px-4 py-2 rounded-lg bg-obsidian-surface border border-gold/40 text-gold hover:border-gold text-xs font-semibold uppercase tracking-wider flex items-center gap-2 transition-colors cursor-pointer">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span>Inspect Vault (180 Assets)</span>
+              </button>
+            </div>
+
+            <!-- Exact Asset Composition per Module (Requested Breakdown) -->
+            <div class="mt-6">
+              <h4 class="text-xs font-mono uppercase tracking-widest text-gold mb-3 font-semibold">Exact Asset Composition in Every Module (12 Assets):</h4>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                
+                <div class="p-4 rounded-xl bg-obsidian-surface/70 border border-obsidian-border flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-burgundy/60 border border-gold/40 flex items-center justify-center text-gold font-bold font-mono text-sm shrink-0">
+                    1
+                  </div>
+                  <div>
+                    <h5 class="text-sm font-bold text-cream">Master Video Lecture</h5>
+                    <p class="text-xs text-cream-muted mt-0.5">Comprehensive, structured presentation breaking down the entire domain.</p>
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-xl bg-obsidian-surface/70 border border-obsidian-border flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-aura-cyan/20 border border-aura-cyan/40 flex items-center justify-center text-aura-cyan font-bold font-mono text-sm shrink-0">
+                    1
+                  </div>
+                  <div>
+                    <h5 class="text-sm font-bold text-cream">Master Audio Breakdown</h5>
+                    <p class="text-xs text-cream-muted mt-0.5">High-fidelity audio edition for commuting, review, and spaced repetition.</p>
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-xl bg-obsidian-surface/70 border border-obsidian-border flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-gold/15 border border-gold/40 flex items-center justify-center text-gold font-bold font-mono text-sm shrink-0">
+                    5
+                  </div>
+                  <div>
+                    <h5 class="text-sm font-bold text-cream">PDF Study Slides & Cheat Sheets</h5>
+                    <p class="text-xs text-cream-muted mt-0.5">Downloadable reference slides, protocol summaries, and syntax cheat sheets.</p>
+                  </div>
+                </div>
+
+                <div class="p-4 rounded-xl bg-obsidian-surface/70 border border-obsidian-border flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-lg bg-aura-magenta/20 border border-aura-magenta/40 flex items-center justify-center text-aura-magenta font-bold font-mono text-sm shrink-0">
+                    5
+                  </div>
+                  <div>
+                    <h5 class="text-sm font-bold text-cream">Explanation & Architecture Videos</h5>
+                    <p class="text-xs text-cream-muted mt-0.5">Targeted visual walkthroughs explaining specific schematics and attack paths.</p>
+                  </div>
+                </div>
+
+              </div>
+              <p class="text-xs text-cream-muted/80 mt-3 font-mono">
+                15 Modules × 12 Assets = 180 total downloadable learning resources.
+              </p>
+            </div>
+
+            <!-- Practical Labs Integration Notice -->
+            <div class="mt-6 p-4 rounded-xl bg-gradient-to-r from-obsidian-surface to-burgundy-deep/60 border border-gold/40 flex items-start gap-3.5">
+              <div class="w-8 h-8 rounded-lg bg-gold/15 border border-gold/40 flex items-center justify-center text-gold shrink-0 mt-0.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <span class="text-xs font-mono font-bold text-gold uppercase tracking-wider">Practical Labs (Coming Soon) Included</span>
+                <p class="text-xs text-cream-muted mt-0.5">
+                  Scenario-based hands-on practical labs are currently in active production. Enrolling in the launch package grants you 100% free lifetime access to all future lab environments when they deploy.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right Side: The Master Sales & Pricing Card (5 Cols) -->
+        <div class="lg:col-span-5 sticky top-28">
+          
+          <div class="p-8 rounded-3xl bg-obsidian-card border-2 border-gold/70 shadow-2xl relative overflow-hidden glow-burgundy">
+            
+            <div class="mb-6">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono uppercase tracking-widest text-gold block">Official Course Access</span>
+                <span class="text-xs px-2.5 py-0.5 rounded-full bg-burgundy border border-gold/40 text-gold font-mono">Instant Delivery</span>
+              </div>
+              <h3 class="text-2xl font-black text-cream mt-2">CyberAura Mega-Bundle</h3>
+              <p class="text-sm text-cream-muted mt-1">15 Core Modules + 180 Downloadable Assets</p>
+            </div>
+
+            <!-- Currency Selector & Dynamic Pricing Box -->
+            <div class="p-5 rounded-2xl bg-obsidian-surface border border-obsidian-border mb-6">
+              
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs text-cream-muted font-medium">Select Payment Method:</span>
+                <div class="inline-flex rounded-lg bg-obsidian p-1 border border-obsidian-border text-xs">
+                  <button id="btnUSD" onclick="setCurrency('USD')" class="px-3 py-1.5 rounded font-semibold transition-colors bg-burgundy text-cream cursor-pointer">
+                    Card / USD ($)
+                  </button>
+                  <button id="btnPKR" onclick="setCurrency('PKR')" class="px-3 py-1.5 rounded font-semibold transition-colors text-cream-muted hover:text-cream cursor-pointer">
+                    Pakistan / PKR (₨)
+                  </button>
+                </div>
+              </div>
+
+              <!-- Price Tag Display -->
+              <div class="flex items-baseline gap-3 mb-1">
+                <span id="priceDisplay" class="text-4xl sm:text-5xl font-black font-mono text-gold tabular-nums">$15</span>
+                <span id="discountBadge" class="hidden text-xs px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 font-mono border border-emerald-800">
+                  Subsidized Community Rate
+                </span>
+              </div>
+              
+              <!-- Payment & Delivery Notice -->
+              <p id="priceNotice" class="text-xs text-cream-muted mt-2 font-mono">
+                Standard flat fee for international buyers via Card (Visa, MasterCard).
+              </p>
+
+              <!-- Pakistan EasyPaisa / JazzCash Instructions -->
+              <div id="pkPaymentDetails" class="hidden mt-4 pt-3 border-t border-obsidian-border text-xs text-cream-muted space-y-1.5">
+                <p class="text-gold font-semibold font-mono">Pakistan EasyPaisa & JazzCash Support:</p>
+                <p>Pay <strong>PKR 1,000</strong> directly via EasyPaisa, JazzCash, or Pakistani local banking on our official store or checkout link.</p>
+              </div>
+
+            </div>
+
+            <!-- What's Inside Checklist -->
+            <div class="space-y-3.5 mb-8">
+              <p class="text-xs font-mono uppercase tracking-wider text-cream font-semibold">Everything Included in the Vault:</p>
+              
+              <div class="flex items-start gap-3 text-sm text-cream-muted">
+                <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                </svg>
+                <span><strong>180 Digital Learning Assets</strong> (15 Modules × 12 Structured Assets)</span>
+              </div>
+
+              <div class="flex items-start gap-3 text-sm text-cream-muted">
+                <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                </svg>
+                <span><strong>15 Master Video Lectures + 15 Master Audio Tracks</strong></span>
+              </div>
+
+              <div class="flex items-start gap-3 text-sm text-cream-muted">
+                <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                </svg>
+                <span><strong>75 PDF Study Slides & Cheat Sheets</strong> for rapid exam & job review</span>
+              </div>
+
+              <div class="flex items-start gap-3 text-sm text-cream-muted">
+                <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                </svg>
+                <span><strong>75 Architecture & Explainer Videos</strong> breaking down threat flows</span>
+              </div>
+
+              <div class="flex items-start gap-3 text-sm text-cream-muted">
+                <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+                </svg>
+                <span><strong>Complimentary Practical Labs:</strong> Free access to all hands-on labs when released</span>
+              </div>
+            </div>
+
+            <!-- Primary Buy CTA -->
+            <a 
+              id="buyNowBtn"
+              href="https://sites.google.com/view/cyberaura-mega-bundle/home" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="w-full py-4 px-6 rounded-xl bg-burgundy hover:bg-burgundy-hover text-cream font-extrabold text-center block text-base tracking-wide uppercase transition-all duration-200 border-2 border-gold shadow-xl hover:shadow-gold/30 hover:scale-[1.01]"
+            >
+              Buy Course Now ($15 / PKR 1,000)
+            </a>
+
+            <!-- Footer Details -->
+            <div class="mt-4 flex items-center justify-between text-xs text-cream-muted">
+              <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                </svg>
+                Official Secure Checkout
+              </span>
+              <button onclick="openModal('previewModal')" class="text-gold hover:underline cursor-pointer">
+                Preview 180 Assets →
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- The 15 Technical Curriculum Modules Section (Fixed Icons & Clean Taxonomy) -->
+  <section id="modules" class="py-20 md:py-28 bg-obsidian-surface/30 border-b border-obsidian-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-mono uppercase tracking-widest text-gold mb-2 block">Comprehensive Roadmap</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-cream mb-4">The 15 Core Curriculum Modules</h2>
+        <p class="text-cream-muted text-base leading-relaxed">
+          15 deep-dive technical domains engineered for complete conceptual and tactical mastery. Each module delivers 1 Master Video, 1 Master Audio, 5 PDF Guides, and 5 Explainer Videos (12 assets each).
+        </p>
+      </div>
+
+      <!-- Modules Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Module 1: Network Protocol Deep Dives (Network / Packet Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 01</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-aura-cyan/15 flex items-center justify-center text-aura-cyan shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                </svg>
+              </div>
+              <span>Network Protocol Deep Dives</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              Dissection of OSI and TCP/IP models, port dynamics (22, 80, 443, 25), TCP 3-way handshakes, UDP routing, ARP spoofing mechanics, and packet stream forensics.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border flex items-center justify-between text-[11px] font-mono">
+            <span class="text-aura-cyan">Sample Video Active</span>
+            <a href="#sample-lecture" class="text-gold hover:underline">Watch Lecture →</a>
+          </div>
+        </div>
+
+        <!-- Module 2: Linux for Security Analysts (Terminal Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 02</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-gold/15 flex items-center justify-center text-gold shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 3-3 3m4.5 0h4.5m-11.25 6h15a2.25 2.25 0 002.25-2.25v-10.5A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
+                </svg>
+              </div>
+              <span>Linux for Security Analysts</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              Linux security architecture, kernel namespaces, permissions models (SUID/SGID), /proc file system introspection, systemd services, and incident triage.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+        <!-- Module 3: Cryptography & PKI (Key/Lock Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 03</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-burgundy/40 flex items-center justify-center text-gold shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
+                </svg>
+              </div>
+              <span>Cryptography & PKI</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              Public Key Infrastructure, symmetric vs asymmetric ciphers, hashing algorithms (SHA-256, bcrypt), digital signatures, TLS handshakes, and certificate authorities.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+        <!-- Module 4: Security Operations (SOC) & SIEM (Radar Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 04</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-aura-cyan/15 flex items-center justify-center text-aura-cyan shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+              </div>
+              <span>Security Operations (SOC) & SIEM</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              SIEM architectural patterns, log ingestion pipelines, alert triaging lifecycles, correlation logic, false-positive reduction, and tier 1-3 analyst operations.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+        <!-- Module 5: Cloud Security Architecture (Cloud Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 05</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-aura-sky/15 flex items-center justify-center text-aura-sky shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+                </svg>
+              </div>
+              <span>Cloud Security Architecture</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              Shared responsibility model, multi-tenant boundaries, AWS and Azure security baselines, CloudTrail audit structures, and serverless isolation principles.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+        <!-- Module 6: Digital Forensics & Incident Response (DFIR Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 06</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-gold/15 flex items-center justify-center text-gold shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                </svg>
+              </div>
+              <span>Digital Forensics & Incident Response</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              Evidence preservation, order of volatility, disk imaging forensics, forensic timeline reconstruction, chain of custody protocols, and containment runbooks.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+        <!-- Module 7: VAPT (Target Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 07</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-burgundy/40 flex items-center justify-center text-gold shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                </svg>
+              </div>
+              <span>Vulnerability Assessment & Penetration Testing</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              Vulnerability assessment frameworks, CVSS 3.1 scoring formulas, threat modeling matrices, attack surface mapping, and penetration testing methodologies.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+        <!-- Module 8: Application & Web Security (Web / Globe Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 08</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-aura-cyan/15 flex items-center justify-center text-aura-cyan shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
+                </svg>
+              </div>
+              <span>Application & Web Security</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              OWASP Top 10 core concepts, SQL injection anatomy, Cross-Site Scripting (XSS), CSRF tokens, secure session management, and HTTP defense headers.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+        <!-- Module 9: Malware Analysis & Reverse Engineering (Binary Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 09</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-gold/15 flex items-center justify-center text-gold shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
+                </svg>
+              </div>
+              <span>Malware Analysis & Reverse Engineering</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              Static vs dynamic analysis fundamentals, PE file structures, packing identification, disassembly fundamentals, and safe sandbox inspection architectures.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+        <!-- Module 10: Cyber Threat Intelligence (Radar / Intelligence Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 10</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-aura-cyan/15 flex items-center justify-center text-aura-cyan shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                </svg>
+              </div>
+              <span>Cyber Threat Intelligence (CTI)</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              Tactical, operational, and strategic CTI; Diamond Model of Intrusion; Pyramid of Pain; STIX/TAXII feed standards; and adversarial attribution frameworks.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+        <!-- Module 11: Identity & Access Management (User / Lock Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 11</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-gold/15 flex items-center justify-center text-gold shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                </svg>
+              </div>
+              <span>Identity & Access Management (IAM)</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              Zero trust enterprise identity, RBAC vs ABAC models, SAML 2.0 & OAuth2 / OpenID Connect federation, privilege creep prevention, and Active Directory security.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+        <!-- Module 12: DevSecOps & CI/CD Security (Pipeline Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 12</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-burgundy/40 flex items-center justify-center text-gold shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                </svg>
+              </div>
+              <span>DevSecOps & CI/CD Security</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              Shift-left philosophy, automated SAST and DAST integration points, container vulnerability scanning, secrets management vaults, and pipeline integrity.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+        <!-- Module 13: Endpoint Security & EDR (Device Guard Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 13</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-aura-cyan/15 flex items-center justify-center text-aura-cyan shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                </svg>
+              </div>
+              <span>Endpoint Security & EDR</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              Endpoint detection mechanics, behavioral heuristics, LOLBAS (Living Off the Land) techniques, kernel hooks, telemetry collectors, and automated containment.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+        <!-- Module 14: OT & ICS Security (Factory / Grid Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 14</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-gold/15 flex items-center justify-center text-gold shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.635v6.635m-12 0h12" />
+                </svg>
+              </div>
+              <span>Operational Technology (OT) & ICS Security</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              SCADA and industrial control architectures, the Purdue Enterprise Reference Grid, Modbus and DNP3 protocol vulnerabilities, and critical infrastructure defense.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+        <!-- Module 15: Active Defense & Deception (Chess / Deception Icon) -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-mono text-gold font-bold">MODULE 15</span>
+              <span class="text-xs font-mono px-2 py-0.5 rounded bg-obsidian-surface text-cream-muted border border-obsidian-border">12 Assets</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-lg bg-aura-magenta/20 flex items-center justify-center text-aura-magenta shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                </svg>
+              </div>
+              <span>Active Defense & Deception Technology</span>
+            </h3>
+            <p class="text-xs text-cream-muted leading-relaxed">
+              Principles of cyber deception, dynamic honey-tokens, canary files, honeypot network placement, legal boundaries, and adversary friction economics.
+            </p>
+          </div>
+          <div class="mt-5 pt-3 border-t border-obsidian-border text-[11px] font-mono text-cream-muted">
+            1 Video · 1 Audio · 5 PDFs · 5 Explainer Videos
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEW SECTION: Practical Labs (Coming Soon) -->
+  <section id="practical-labs" class="py-20 md:py-28 bg-obsidian border-b border-obsidian-border relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mb-14">
+        <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-aura-cyan mb-2">
+          <span class="w-2 h-2 rounded-full bg-aura-cyan animate-pulse"></span>
+          <span>Curriculum Roadmap Phase 2</span>
+          <span>·</span>
+          <span>Active Production</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-cream mb-4">
+          Practical Labs <span class="text-gold font-light">(Coming Soon)</span>
+        </h2>
+        <p class="text-cream-muted text-base sm:text-lg leading-relaxed">
+          Hands-on technical lab environments and scenario-based simulation ranges are currently being built to complement each theoretical discipline. <strong>All students who enroll now receive these practical lab environments as a complimentary free update upon launch.</strong>
+        </p>
+      </div>
+
+      <!-- Lab Scenarios Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Lab 1 -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-aura-cyan/50 transition-colors">
+          <div class="flex items-center justify-between text-xs font-mono text-gold mb-3">
+            <span>LAB RANGE 01</span>
+            <span class="px-2 py-0.5 rounded bg-aura-cyan/10 text-aura-sky border border-aura-cyan/20">In Development</span>
+          </div>
+          <h4 class="text-base font-bold text-cream mb-2">SIEM Log Ingestion & Threat Hunting Sandbox</h4>
+          <p class="text-xs text-cream-muted leading-relaxed">
+            Live Wazuh and Elastic environment configured to parse real adversarial telemetry. Write custom alert rules and triage simulated multi-stage attacks.
+          </p>
+        </div>
+
+        <!-- Lab 2 -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-aura-cyan/50 transition-colors">
+          <div class="flex items-center justify-between text-xs font-mono text-gold mb-3">
+            <span>LAB RANGE 02</span>
+            <span class="px-2 py-0.5 rounded bg-aura-cyan/10 text-aura-sky border border-aura-cyan/20">In Development</span>
+          </div>
+          <h4 class="text-base font-bold text-cream mb-2">Active Directory Attack Path & Kerberoasting</h4>
+          <p class="text-xs text-cream-muted leading-relaxed">
+            Hands-on domain controller virtual range. Detect Kerberoasting requests, monitor SPN enumeration, and configure decoy service accounts.
+          </p>
+        </div>
+
+        <!-- Lab 3 -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-aura-cyan/50 transition-colors">
+          <div class="flex items-center justify-between text-xs font-mono text-gold mb-3">
+            <span>LAB RANGE 03</span>
+            <span class="px-2 py-0.5 rounded bg-aura-cyan/10 text-aura-sky border border-aura-cyan/20">In Development</span>
+          </div>
+          <h4 class="text-base font-bold text-cream mb-2">Cloud Incident Response & AWS CloudTrail</h4>
+          <p class="text-xs text-cream-muted leading-relaxed">
+            Simulated cloud breach scenario. Audit unauthorized privilege escalation, trace S3 bucket exposure, and isolate compromised EC2 instances.
+          </p>
+        </div>
+
+        <!-- Lab 4 -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-aura-cyan/50 transition-colors">
+          <div class="flex items-center justify-between text-xs font-mono text-gold mb-3">
+            <span>LAB RANGE 04</span>
+            <span class="px-2 py-0.5 rounded bg-aura-cyan/10 text-aura-sky border border-aura-cyan/20">In Development</span>
+          </div>
+          <h4 class="text-base font-bold text-cream mb-2">Deep Packet Forensics & C2 Beacon Extraction</h4>
+          <p class="text-xs text-cream-muted leading-relaxed">
+            Hands-on Wireshark and Zeek packet analysis on raw malicious captures. Uncover hidden DNS exfiltration channels and encrypted beaconing patterns.
+          </p>
+        </div>
+
+        <!-- Lab 5 -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-aura-cyan/50 transition-colors">
+          <div class="flex items-center justify-between text-xs font-mono text-gold mb-3">
+            <span>LAB RANGE 05</span>
+            <span class="px-2 py-0.5 rounded bg-aura-cyan/10 text-aura-sky border border-aura-cyan/20">In Development</span>
+          </div>
+          <h4 class="text-base font-bold text-cream mb-2">Deception Engineering & Canary Decoy Grid</h4>
+          <p class="text-xs text-cream-muted leading-relaxed">
+            Deploy dynamic honeytokens, fake database tables, and tripwired credentials that notify webhooks instantaneously upon attacker interaction.
+          </p>
+        </div>
+
+        <!-- Lab 6 -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-aura-cyan/50 transition-colors">
+          <div class="flex items-center justify-between text-xs font-mono text-gold mb-3">
+            <span>LAB RANGE 06</span>
+            <span class="px-2 py-0.5 rounded bg-aura-cyan/10 text-aura-sky border border-aura-cyan/20">In Development</span>
+          </div>
+          <h4 class="text-base font-bold text-cream mb-2">End-to-End Enterprise Breach Capstone</h4>
+          <p class="text-xs text-cream-muted leading-relaxed">
+            Comprehensive defender challenge: trace the attack lifecycle from initial perimeter breach to root cause containment and executive debrief.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Complimentary Upgrade Guarantee Card -->
+      <div class="mt-12 p-8 rounded-3xl bg-gradient-to-r from-obsidian-card via-obsidian-surface to-burgundy-deep/70 border border-gold/40 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div class="max-w-2xl">
+          <span class="text-xs font-mono text-gold uppercase tracking-wider font-bold">100% Complimentary Practical Upgrade Guarantee</span>
+          <h3 class="text-xl font-bold text-cream mt-1">Get the 15 Modules Today & Lock In All Future Labs</h3>
+          <p class="text-xs text-cream-muted mt-2 leading-relaxed">
+            When you purchase the CyberAura Mega-Bundle for $15 (or PKR 1,000 in Pakistan), all upcoming practical labs, virtual range files, and walkthroughs will be credited directly to your account with zero added charges.
+          </p>
+        </div>
+        <a href="https://sites.google.com/view/cyberaura-mega-bundle/home" target="_blank" rel="noopener noreferrer" class="shrink-0 px-8 py-3.5 rounded-xl bg-burgundy hover:bg-burgundy-hover border border-gold text-cream font-bold text-xs uppercase tracking-wider transition-all shadow-lg hover:shadow-gold/20">
+          Enroll Now ($15 / PKR 1,000)
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEW SECTION: Events & Webinars -->
+  <section id="events" class="py-20 md:py-28 bg-obsidian-surface/40 border-b border-obsidian-border relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div class="max-w-2xl">
+          <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gold mb-2">
+            <span>Community Knowledge Sharing</span>
+            <span>·</span>
+            <span>Live Briefings</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-cream mb-3">
+            Events & Interactive Webinars
+          </h2>
+          <p class="text-cream-muted text-base">
+            Participate in specialized live webinars, technical breakdowns, and interactive Q&A sessions led by instructor Touheed Ahmed and guest defensive architects.
+          </p>
+        </div>
+        <button onclick="openModal('webinarModal')" class="shrink-0 px-6 py-3 rounded-xl bg-obsidian-card hover:bg-obsidian border border-gold/60 text-gold hover:text-white text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer flex items-center gap-2">
+          <span>Register for Upcoming Session</span>
+          <span class="text-sm">→</span>
+        </button>
+      </div>
+
+      <!-- Events List -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Event 1 -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/40 transition-colors flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono mb-3">
+              <span class="px-2.5 py-1 rounded bg-burgundy/60 text-gold border border-burgundy">Live Webinar</span>
+              <span class="text-cream-muted">Coming soon</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2">Anatomy of an Adversary Breach: From Initial Access to SIEM Detection</h3>
+            <p class="text-xs text-cream-muted leading-relaxed mb-4">
+              Step-by-step breakdown tracing how an attacker traverses from initial unmonitored port exposure to domain escalation, and how modern SIEMs correlate the forensic trail.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-obsidian-border flex items-center justify-between">
+            <span class="text-xs text-cream-muted font-mono">Free for Enrolled Students</span>
+            <button onclick="openModal('webinarModal')" class="text-xs text-gold font-bold hover:underline cursor-pointer">Register →</button>
+          </div>
+        </div>
+
+        <!-- Event 2 -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/40 transition-colors flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono mb-3">
+              <span class="px-2.5 py-1 rounded bg-aura-cyan/20 text-aura-sky border border-aura-cyan/30">Technical Briefing</span>
+              <span class="text-cream-muted">Coming soon</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2">Decoy Architectures: Deploying Dynamic Honeytokens to Trap Attackers</h3>
+            <p class="text-xs text-cream-muted leading-relaxed mb-4">
+              Practical demonstration on generating believable canary credentials, fake database tables, and tripwire files that alert SOC analysts before data exfiltration occurs.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-obsidian-border flex items-center justify-between">
+            <span class="text-xs text-cream-muted font-mono">Live Q&A Included</span>
+            <button onclick="openModal('webinarModal')" class="text-xs text-gold font-bold hover:underline cursor-pointer">Register →</button>
+          </div>
+        </div>
+
+        <!-- Event 3 -->
+        <div class="p-6 rounded-2xl bg-obsidian-card border border-obsidian-border hover:border-gold/40 transition-colors flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono mb-3">
+              <span class="px-2.5 py-1 rounded bg-obsidian-surface text-gold border border-obsidian-border">Career AMA</span>
+              <span class="text-cream-muted">Coming soon</span>
+            </div>
+            <h3 class="text-lg font-bold text-cream mb-2">Breaking Into SOC Operations & DFIR in 2026</h3>
+            <p class="text-xs text-cream-muted leading-relaxed mb-4">
+              Open discussion with Touheed Ahmed on essential conceptual competencies, port mastery, interview frameworks, and building credibility as an aspiring analyst.
+            </p>
+          </div>
+          <div class="pt-4 border-t border-obsidian-border flex items-center justify-between">
+            <span class="text-xs text-cream-muted font-mono">Archive Included</span>
+            <button onclick="openModal('webinarModal')" class="text-xs text-gold font-bold hover:underline cursor-pointer">Register →</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Instructor & Brand Authority (About Section - Heading Updated) -->
+  <section id="about" class="py-20 md:py-28 bg-obsidian border-b border-obsidian-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Portrait (4 Cols) -->
+        <div class="lg:col-span-4 flex justify-center">
+          <div class="relative w-full max-w-sm rounded-2xl overflow-hidden border-2 border-gold/40 bg-obsidian-card shadow-2xl p-2 glow-gold-hover transition-all">
+            <div class="aspect-square rounded-xl overflow-hidden bg-obsidian-surface relative">
+              <img 
+                src="/src/assets/images/instructor_cyber_lab_1792049509060.jpg" 
+                alt="Touheed Ahmed - Lead Cybersecurity Instructor & Founder at CyberAura" 
+                referrerpolicy="no-referrer"
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'; document.getElementById('instructorFallback').style.display='flex';"
+              />
+              <div id="instructorFallback" class="hidden absolute inset-0 bg-obsidian-surface flex-col items-center justify-center p-6 text-center">
+                <div class="w-16 h-16 rounded-full bg-burgundy flex items-center justify-center text-gold text-2xl font-bold mb-3">TA</div>
+                <h4 class="font-bold text-cream">Touheed Ahmed</h4>
+                <p class="text-xs text-gold">CyberAura Founder</p>
+              </div>
+            </div>
+            
+            <div class="p-4 text-center">
+              <h3 class="text-xl font-bold text-cream">Touheed Ahmed</h3>
+              <p class="text-xs font-mono text-gold tracking-wide mt-0.5">Founder & Lead Security Architect</p>
+              <p class="text-xs text-cream-muted mt-2">Network Security · Digital Forensics · Active Cloud Defense</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Bio (8 Cols) - Updated Heading per Feedback -->
+        <div class="lg:col-span-8 space-y-6">
+          
+          <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gold">
+            <span>Leadership & Academy Pedagogy</span>
+            <span>·</span>
+            <span>cyberaura.academy</span>
+          </div>
+
+          <!-- Exact New Requested Heading -->
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-cream leading-tight">
+            Building Uncompromising Security Foundations from the Protocol Up
+          </h2>
+
+          <p class="text-cream-muted text-base sm:text-lg leading-relaxed">
+            At <strong>CyberAura</strong>, our mission is to build rock-solid foundational security engineering skills for aspiring defenders and seasoned security practitioners alike. Founded by <strong>Touheed Ahmed</strong>, CyberAura delivers an uncompromising curriculum covering network packet behavior, cloud posture, and forensic investigation.
+          </p>
+
+          <p class="text-cream-muted text-base leading-relaxed">
+            Specializing in <strong>Network Security, Digital Forensics, and Active Cloud Defense</strong>, Touheed structured the 180-Asset Cybersecurity Mega-Bundle so every learner masters the intricate architectural blueprints, communication flows, and threat models before stepping into live adversary combat.
+          </p>
+
+          <!-- Verified Social & Organizational Badges -->
+          <div class="pt-4 flex flex-wrap gap-4 items-center">
+            
+            <!-- Personal LinkedIn -->
+            <a 
+              href="https://www.linkedin.com/in/touheedahmed" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="px-5 py-3 rounded-xl bg-obsidian-surface hover:bg-obsidian-surface/80 border border-obsidian-border hover:border-gold/60 text-cream text-xs font-semibold flex items-center gap-3 transition-colors"
+            >
+              <svg class="w-5 h-5 text-[#0A66C2]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <div>
+                <span class="block text-cream">Touheed Ahmed</span>
+                <span class="text-[11px] text-cream-muted font-mono">Personal LinkedIn Profile ↗</span>
+              </div>
+            </a>
+
+            <!-- Company LinkedIn -->
+            <a 
+              href="https://www.linkedin.com/company/cyberaura" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="px-5 py-3 rounded-xl bg-obsidian-surface hover:bg-obsidian-surface/80 border border-obsidian-border hover:border-gold/60 text-cream text-xs font-semibold flex items-center gap-3 transition-colors"
+            >
+              <div class="w-5 h-5 rounded bg-black flex items-center justify-center p-0.5">
+                <img src="/src/assets/images/cyberaura_logo.svg" alt="CyberAura" class="w-full h-full object-contain" />
+              </div>
+              <div>
+                <span class="block text-cream">CyberAura Organization</span>
+                <span class="text-[11px] text-cream-muted font-mono">Company LinkedIn Page ↗</span>
+              </div>
+            </a>
+
+            <!-- Official Website Direct Marker -->
+            <div class="px-5 py-3 rounded-xl bg-obsidian-card border border-obsidian-border text-xs flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span class="font-mono text-cream-muted">Official Academy:</span>
+              <span class="font-mono text-gold font-semibold">cyberaura.academy</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive 180-Asset Mega-Bundle Modal -->
+  <div id="previewModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="bg-obsidian-card border border-gold/40 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden modal-enter">
+      
+      <!-- Modal Header -->
+      <div class="px-6 py-5 bg-obsidian-surface border-b border-obsidian-border flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-black border border-obsidian-border p-1 flex items-center justify-center">
+            <img src="/src/assets/images/cyberaura_logo.svg" alt="CyberAura" class="w-full h-full object-contain" />
+          </div>
+          <div>
+            <h3 id="modalTitle" class="text-lg font-bold text-cream">CyberAura 180-Asset Vault Breakdown</h3>
+            <p class="text-xs text-cream-muted">15 Modules × 12 Assets (1 Video + 1 Audio + 5 PDFs + 5 Explainer Videos per module)</p>
+          </div>
+        </div>
+        <button onclick="closeModal('previewModal')" class="p-2 text-cream-muted hover:text-cream rounded-lg hover:bg-obsidian-card transition-colors cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Filter Tabs Inside Modal -->
+      <div class="px-6 py-3 bg-obsidian border-b border-obsidian-border flex items-center gap-2 overflow-x-auto text-xs font-medium">
+        <button onclick="filterModalAssets('all')" id="tab-all" class="asset-tab px-3 py-1.5 rounded-lg bg-burgundy text-cream cursor-pointer whitespace-nowrap">All 180 Assets</button>
+        <button onclick="filterModalAssets('master')" id="tab-master" class="asset-tab px-3 py-1.5 rounded-lg text-cream-muted hover:text-cream cursor-pointer whitespace-nowrap">Master Videos (15)</button>
+        <button onclick="filterModalAssets('audio')" id="tab-audio" class="asset-tab px-3 py-1.5 rounded-lg text-cream-muted hover:text-cream cursor-pointer whitespace-nowrap">Master Audios (15)</button>
+        <button onclick="filterModalAssets('pdf')" id="tab-pdf" class="asset-tab px-3 py-1.5 rounded-lg text-cream-muted hover:text-cream cursor-pointer whitespace-nowrap">PDF Study Guides (75)</button>
+        <button onclick="filterModalAssets('architecture')" id="tab-architecture" class="asset-tab px-3 py-1.5 rounded-lg text-cream-muted hover:text-cream cursor-pointer whitespace-nowrap">Architecture Videos (75)</button>
+      </div>
+
+      <!-- Modal Body / Asset Explorer -->
+      <div class="p-6 overflow-y-auto space-y-3 max-h-[50vh]" id="assetContainer">
+        
+        <!-- Asset Category 1: Master Video Lecture -->
+        <div class="asset-item p-3.5 rounded-xl bg-obsidian-surface/60 border border-obsidian-border flex items-center justify-between" data-category="master">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-burgundy/40 text-gold border border-burgundy">MASTER VIDEO</span>
+            <div>
+              <p class="text-sm font-semibold text-cream">Module 01: Network Protocol Deep Dives (Full HD Lecture)</p>
+              <p class="text-xs text-cream-muted">1 of 15 Master Lectures covering OSI, TCP/IP, Port Scanning & Layer 2 Spoofing</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-aura-cyan">Video Track</span>
+        </div>
+
+        <!-- Asset Category 2: Master Audio Breakdown -->
+        <div class="asset-item p-3.5 rounded-xl bg-obsidian-surface/60 border border-obsidian-border flex items-center justify-between" data-category="audio">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-aura-cyan/20 text-aura-sky border border-aura-cyan/40">MASTER AUDIO</span>
+            <div>
+              <p class="text-sm font-semibold text-cream">Module 01: Network Protocols Full Audio Edition (MP3)</p>
+              <p class="text-xs text-cream-muted">1 of 15 Master Audio guides designed for commute & spaced repetition study</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-aura-sky">Audio Track</span>
+        </div>
+
+        <!-- Asset Category 3: PDF Study Slides -->
+        <div class="asset-item p-3.5 rounded-xl bg-obsidian-surface/60 border border-obsidian-border flex items-center justify-between" data-category="pdf">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-gold/15 text-gold border border-gold/30">PDF STUDY SLIDES</span>
+            <div>
+              <p class="text-sm font-semibold text-cream">Module 01_Asset_01: OSI_vs_TCPIP_Architectural_Reference.pdf</p>
+              <p class="text-xs text-cream-muted">Header mappings, encapsulation layers, and protocol inspection rules</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-gold">Slide Deck 1 of 5</span>
+        </div>
+
+        <div class="asset-item p-3.5 rounded-xl bg-obsidian-surface/60 border border-obsidian-border flex items-center justify-between" data-category="pdf">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-gold/15 text-gold border border-gold/30">PDF STUDY SLIDES</span>
+            <div>
+              <p class="text-sm font-semibold text-cream">Module 01_Asset_02: Standard_Port_Protocols_Defenders_Dictionary.pdf</p>
+              <p class="text-xs text-cream-muted">Ports 0-1023 mapped with transport behavior and abuse heuristics</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-gold">Slide Deck 2 of 5</span>
+        </div>
+
+        <!-- Asset Category 4: Explainer Videos -->
+        <div class="asset-item p-3.5 rounded-xl bg-obsidian-surface/60 border border-obsidian-border flex items-center justify-between" data-category="architecture">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-aura-magenta/20 text-aura-magenta border border-aura-magenta/40">EXPLAINER VIDEO</span>
+            <div>
+              <p class="text-sm font-semibold text-cream">Module 01_Architecture_01: Three_Way_Handshake_State_Transitions.mp4</p>
+              <p class="text-xs text-cream-muted">SYN, SYN-ACK, ACK packet lifecycle and sequence synchronization</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-aura-magenta">Explainer 1 of 5</span>
+        </div>
+
+        <div class="asset-item p-3.5 rounded-xl bg-obsidian-surface/60 border border-obsidian-border flex items-center justify-between" data-category="architecture">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-aura-magenta/20 text-aura-magenta border border-aura-magenta/40">EXPLAINER VIDEO</span>
+            <div>
+              <p class="text-sm font-semibold text-cream">Module 01_Architecture_02: ARP_Cache_Poisoning_MITM_Flow.mp4</p>
+              <p class="text-xs text-cream-muted">Frame broadcast spoofing and traffic rerouting visual breakdown</p>
+            </div>
+          </div>
+          <span class="text-xs font-mono text-aura-magenta">Explainer 2 of 5</span>
+        </div>
+
+        <div class="p-4 rounded-xl bg-obsidian text-center border border-obsidian-border">
+          <p class="text-xs text-cream-muted">
+            + 174 additional assets structured identically across all 15 modules (1 Video + 1 Audio + 5 PDFs + 5 Videos per module).
+          </p>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-4 bg-obsidian-surface border-t border-obsidian-border flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="text-xs text-cream-muted">
+          Instant digital delivery granted immediately upon course registration.
+        </div>
+        <div class="flex items-center gap-3 w-full sm:w-auto">
+          <button onclick="closeModal('previewModal')" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-obsidian-border text-xs font-semibold text-cream hover:bg-obsidian-card transition-colors cursor-pointer">
+            Close Preview
+          </button>
+          <a href="https://sites.google.com/view/cyberaura-mega-bundle/home" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-burgundy hover:bg-burgundy-hover border border-gold text-cream font-bold text-xs uppercase tracking-wider text-center transition-all shadow-md">
+            Buy Now ($15 / PKR 1,000)
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Interactive Webinar Registration Modal -->
+  <div id="webinarModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="webinarTitle">
+    <div class="bg-obsidian-card border border-gold/40 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden modal-enter">
+      
+      <div class="px-6 py-5 bg-obsidian-surface border-b border-obsidian-border flex items-center justify-between">
+        <div>
+          <h3 id="webinarTitle" class="text-lg font-bold text-cream">Register for CyberAura Webinar</h3>
+          <p class="text-xs text-cream-muted">Reserve your virtual seat for upcoming live technical security sessions</p>
+        </div>
+        <button onclick="closeModal('webinarModal')" class="p-2 text-cream-muted hover:text-cream rounded-lg hover:bg-obsidian-card transition-colors cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <form id="webinarForm" onsubmit="handleWebinarSubmit(event)" class="p-6 space-y-4">
+        <div>
+          <label class="block text-xs font-mono uppercase text-cream mb-1">Your Full Name</label>
+          <input type="text" id="webinarName" required placeholder="e.g. Asad Khan" class="w-full px-4 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-cream text-sm focus:outline-none focus:border-gold" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono uppercase text-cream mb-1">Email Address (for Invite Link)</label>
+          <input type="email" id="webinarEmail" required placeholder="asad@example.com" class="w-full px-4 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-cream text-sm focus:outline-none focus:border-gold" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono uppercase text-cream mb-1">Select Session</label>
+          <select id="webinarSession" class="w-full px-4 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-cream text-sm focus:outline-none focus:border-gold">
+            <option value="breach">Live Webinar: Anatomy of an Adversary Breach & SIEM Detection</option>
+            <option value="decoys">Technical Briefing: Deploying Dynamic Honeytokens</option>
+            <option value="career">Career AMA: Breaking Into SOC Operations & DFIR in 2026</option>
+          </select>
+        </div>
+
+        <div id="webinarSuccessMsg" class="hidden p-3 rounded-xl bg-emerald-950/80 border border-emerald-800 text-xs text-emerald-300">
+          Registration confirmed! Calendar invite and access credentials have been transmitted to your email.
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-3">
+          <button type="button" onclick="closeModal('webinarModal')" class="px-4 py-2 rounded-xl border border-obsidian-border text-xs font-semibold text-cream hover:bg-obsidian-surface transition-colors cursor-pointer">
+            Cancel
+          </button>
+          <button type="submit" id="webinarSubmitBtn" class="px-6 py-2.5 rounded-xl bg-burgundy hover:bg-burgundy-hover border border-gold text-cream font-bold text-xs uppercase tracking-wider transition-colors shadow-md cursor-pointer">
+            Confirm Registration
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Interactive Contact Modal -->
+  <div id="contactModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+    <div class="bg-obsidian-card border border-gold/40 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden modal-enter">
+      
+      <div class="px-6 py-5 bg-obsidian-surface border-b border-obsidian-border flex items-center justify-between">
+        <div>
+          <h3 id="contactTitle" class="text-lg font-bold text-cream">Contact CyberAura Academy</h3>
+          <p class="text-xs text-cream-muted">Assistance with the Mega-Bundle, EasyPaisa/JazzCash, or corporate inquiry</p>
+        </div>
+        <button onclick="closeModal('contactModal')" class="p-2 text-cream-muted hover:text-cream rounded-lg hover:bg-obsidian-card transition-colors cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <form id="contactForm" onsubmit="handleContactSubmit(event)" class="p-6 space-y-4">
+        <div>
+          <label class="block text-xs font-mono uppercase text-cream mb-1">Your Full Name</label>
+          <input type="text" id="contactName" required placeholder="e.g. Zain Malik" class="w-full px-4 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-cream text-sm focus:outline-none focus:border-gold" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono uppercase text-cream mb-1">Email Address</label>
+          <input type="email" id="contactEmail" required placeholder="zain@example.com" class="w-full px-4 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-cream text-sm focus:outline-none focus:border-gold" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono uppercase text-cream mb-1">Inquiry Topic</label>
+          <select id="contactType" class="w-full px-4 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-cream text-sm focus:outline-none focus:border-gold">
+            <option value="pakistan_payment">Pakistan EasyPaisa / JazzCash Payment (PKR 1,000)</option>
+            <option value="mega_bundle">CyberAura Mega-Bundle Access Inquiry</option>
+            <option value="practical_labs">Practical Labs Early Access Program</option>
+            <option value="team_license">Academic / Team Group License</option>
+            <option value="general">Question for Instructor Touheed Ahmed</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono uppercase text-cream mb-1">Message</label>
+          <textarea id="contactMessage" rows="3" required placeholder="How can CyberAura assist your training goals?" class="w-full px-4 py-2.5 rounded-xl bg-obsidian-surface border border-obsidian-border text-cream text-sm focus:outline-none focus:border-gold"></textarea>
+        </div>
+
+        <div id="contactSuccessMsg" class="hidden p-3 rounded-xl bg-emerald-950/80 border border-emerald-800 text-xs text-emerald-300">
+          Message sent successfully! Touheed Ahmed and the CyberAura team will reach out within 24 hours.
+        </div>
+
+        <div class="pt-2 flex items-center justify-end gap-3">
+          <button type="button" onclick="closeModal('contactModal')" class="px-4 py-2 rounded-xl border border-obsidian-border text-xs font-semibold text-cream hover:bg-obsidian-surface transition-colors cursor-pointer">
+            Cancel
+          </button>
+          <button type="submit" id="submitBtn" class="px-6 py-2.5 rounded-xl bg-burgundy hover:bg-burgundy-hover border border-gold text-cream font-bold text-xs uppercase tracking-wider transition-colors shadow-md cursor-pointer">
+            Transmit Inquiry
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Clean Footer -->
+  <footer class="bg-obsidian border-t border-obsidian-border py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-obsidian-border">
+        
+        <!-- Brand Summary (5 Cols) -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-lg bg-black border border-obsidian-border p-1 flex items-center justify-center">
+              <img src="/src/assets/images/cyberaura_logo.svg" alt="CyberAura" class="h-full w-full object-contain" />
+            </div>
+            <div class="flex items-baseline">
+              <span class="text-xl font-black text-white font-sans">Cyber</span>
+              <span class="text-xl font-black bg-gradient-to-r from-aura-magenta to-aura-cyan bg-clip-text text-transparent font-sans">Aura</span>
+            </div>
+          </div>
+
+          <p class="text-sm text-cream-muted max-w-sm leading-relaxed">
+            Next-Generation Cybersecurity Education and Training. Comprehensive curriculum across 15 core disciplines, paired with 180 learning assets and upcoming hands-on practical labs.
+          </p>
+
+          <p class="text-xs font-mono text-gold">
+            Domain: <a href="https://cyberaura.academy" class="hover:underline">cyberaura.academy</a>
+          </p>
+        </div>
+
+        <!-- Quick Navigation (4 Cols) -->
+        <div class="md:col-span-4 space-y-3">
+          <h4 class="text-xs font-mono uppercase tracking-wider text-cream font-bold">Quick Navigation</h4>
+          <ul class="space-y-2 text-sm text-cream-muted">
+            <li><a href="#hero" class="hover:text-gold transition-colors">Home Overview</a></li>
+            <li><a href="#featured-course" class="hover:text-gold transition-colors">Mega-Bundle Sales Page</a></li>
+            <li><a href="#modules" class="hover:text-gold transition-colors">The 15 Curriculum Modules</a></li>
+            <li><a href="#practical-labs" class="text-aura-cyan hover:text-white transition-colors">Practical Labs (Coming Soon)</a></li>
+            <li><a href="#events" class="hover:text-gold transition-colors">Events & Webinars</a></li>
+            <li><a href="#about" class="hover:text-gold transition-colors">About Touheed Ahmed</a></li>
+            <li><button onclick="openModal('previewModal')" class="text-left hover:text-gold transition-colors cursor-pointer">180-Asset Vault Preview</button></li>
+            <li><button onclick="openModal('contactModal')" class="text-left hover:text-gold transition-colors cursor-pointer">Contact Academy</button></li>
+          </ul>
+        </div>
+
+        <!-- Social Badges & Store Outbound (3 Cols) -->
+        <div class="md:col-span-3 space-y-4">
+          <h4 class="text-xs font-mono uppercase tracking-wider text-cream font-bold">Official Profiles</h4>
+          <div class="flex flex-col space-y-2.5 text-xs text-cream-muted">
+            
+            <a href="https://www.linkedin.com/in/touheedahmed" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition-colors flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#0A66C2]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <span>Touheed Ahmed (LinkedIn)</span>
+            </a>
+
+            <a href="https://www.linkedin.com/company/cyberaura" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition-colors flex items-center gap-2">
+              <div class="w-4 h-4 rounded bg-black flex items-center justify-center p-0.5">
+                <img src="/src/assets/images/cyberaura_logo.svg" alt="CyberAura" class="w-full h-full object-contain" />
+              </div>
+              <span>CyberAura Company Page</span>
+            </a>
+
+            <a href="https://sites.google.com/view/cyberaura-mega-bundle/home" target="_blank" rel="noopener noreferrer" class="hover:text-gold transition-colors flex items-center gap-2">
+              <svg class="w-4 h-4 text-burgundy" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+              </svg>
+              <span>Official Mega-Bundle Checkout</span>
+            </a>
+
+          </div>
+
+          <div class="pt-2">
+            <a href="https://sites.google.com/view/cyberaura-mega-bundle/home" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 rounded-lg bg-burgundy/40 hover:bg-burgundy border border-gold/40 text-cream text-xs font-semibold uppercase tracking-wider transition-colors">
+              Direct Store Link ↗
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Bottom Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-cream-muted gap-4">
+        <div>
+          &copy; 2026 <strong>CyberAura</strong> (<a href="https://cyberaura.academy" class="text-gold hover:underline">cyberaura.academy</a>). Next-Generation Cybersecurity Education and Training. All rights reserved.
+        </div>
+        <div class="flex items-center gap-6">
+          <span>Authored by Touheed Ahmed</span>
+          <span>·</span>
+          <span>15 Modules · 180 Assets · Practical Labs</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Vanilla JavaScript Interactivity Script -->
+  <script>
+    // Mobile navigation toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+    const closeIcon = document.getElementById('closeIcon');
+
+    function toggleMobileMenu() {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (isHidden) {
+        mobileMenu.classList.remove('hidden');
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+    }
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (!mobileMenu.classList.contains('hidden')) {
+          toggleMobileMenu();
+        }
+      });
+    });
+
+    // Modal helpers
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    // Close modal on escape key or backdrop click
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal('previewModal');
+        closeModal('contactModal');
+        closeModal('webinarModal');
+      }
+    });
+
+    document.querySelectorAll('#previewModal, #contactModal, #webinarModal').forEach(modalEl => {
+      modalEl.addEventListener('click', (e) => {
+        if (e.target === modalEl) {
+          modalEl.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+        }
+      });
+    });
+
+    // Filter modal assets
+    function filterModalAssets(category) {
+      document.querySelectorAll('.asset-tab').forEach(tab => {
+        tab.classList.remove('bg-burgundy', 'text-cream');
+        tab.classList.add('text-cream-muted');
+      });
+      const activeTab = document.getElementById('tab-' + category);
+      if (activeTab) {
+        activeTab.classList.add('bg-burgundy', 'text-cream');
+        activeTab.classList.remove('text-cream-muted');
+      }
+
+      const items = document.querySelectorAll('.asset-item');
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Currency Switcher: USD ($15) vs PKR (₨ 1,000)
+    let currentCurrency = 'USD';
+    function setCurrency(curr) {
+      currentCurrency = curr;
+      const priceDisplay = document.getElementById('priceDisplay');
+      const discountBadge = document.getElementById('discountBadge');
+      const priceNotice = document.getElementById('priceNotice');
+      const pkPaymentDetails = document.getElementById('pkPaymentDetails');
+      const btnUSD = document.getElementById('btnUSD');
+      const btnPKR = document.getElementById('btnPKR');
+      const buyNowBtn = document.getElementById('buyNowBtn');
+
+      if (curr === 'USD') {
+        priceDisplay.textContent = '$15';
+        discountBadge.classList.add('hidden');
+        priceNotice.textContent = 'Standard flat fee for international buyers via Card (Visa, MasterCard).';
+        pkPaymentDetails.classList.add('hidden');
+        btnUSD.className = 'px-3 py-1.5 rounded font-semibold transition-colors bg-burgundy text-cream cursor-pointer';
+        btnPKR.className = 'px-3 py-1.5 rounded font-semibold transition-colors text-cream-muted hover:text-cream cursor-pointer';
+        buyNowBtn.textContent = 'Buy Course Now ($15)';
+      } else {
+        priceDisplay.textContent = 'PKR 1,000';
+        discountBadge.classList.remove('hidden');
+        discountBadge.textContent = 'Subsidized Community Rate';
+        priceNotice.textContent = 'Special price for Pakistan defenders · Instant access via EasyPaisa / JazzCash / Local Bank.';
+        pkPaymentDetails.classList.remove('hidden');
+        btnPKR.className = 'px-3 py-1.5 rounded font-semibold transition-colors bg-burgundy text-cream cursor-pointer';
+        btnUSD.className = 'px-3 py-1.5 rounded font-semibold transition-colors text-cream-muted hover:text-cream cursor-pointer';
+        buyNowBtn.textContent = 'Get Course (PKR 1,000 / EasyPaisa / JazzCash)';
+      }
+    }
+
+    // Video Player Helpers
+    function playSampleVideo() {
+      const video = document.getElementById('courseSampleVideo');
+      const overlay = document.getElementById('videoOverlay');
+      if (video) {
+        overlay.style.display = 'none';
+        video.play();
+      }
+    }
+
+    function seekVideo(seconds) {
+      const video = document.getElementById('courseSampleVideo');
+      const overlay = document.getElementById('videoOverlay');
+      if (video) {
+        overlay.style.display = 'none';
+        video.currentTime = seconds;
+        video.play();
+      }
+    }
+
+    // Contact Form Handler
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('submitBtn');
+      const successMsg = document.getElementById('contactSuccessMsg');
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Transmitting...';
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Transmit Inquiry';
+        successMsg.classList.remove('hidden');
+        document.getElementById('contactForm').reset();
+
+        setTimeout(() => {
+          closeModal('contactModal');
+          successMsg.classList.add('hidden');
+        }, 3000);
+      }, 600);
+    }
+
+    // Webinar Registration Handler
+    function handleWebinarSubmit(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('webinarSubmitBtn');
+      const successMsg = document.getElementById('webinarSuccessMsg');
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Confirming...';
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Confirm Registration';
+        successMsg.classList.remove('hidden');
+        document.getElementById('webinarForm').reset();
+
+        setTimeout(() => {
+          closeModal('webinarModal');
+          successMsg.classList.add('hidden');
+        }, 3000);
+      }, 600);
+    }
+  </script>
+</body>
+</html>
